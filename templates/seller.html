@@ -1,0 +1,158 @@
+{% include 'common/seller_header.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark ">
+  <a class="navbar-brand" href="#">DinoBiz</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <div class="dropdown">
+          <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Account
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Profile</a>
+            <a class="dropdown-item" href="#">Logout</a>
+          </div>
+        </div>
+      </li>
+      
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'seller' %}">Orders</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'productsAdd' %}">Products</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#">Top Offers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Customer Care</a>
+      </li> -->
+      
+    </ul>
+  </div>
+  
+</nav>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h1 class="display-4">Hello, {{seller.fname}} {{seller.lname}}!</h1>
+      <!-- <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p> -->
+      <hr class="my-4">
+      <h3>You have {{pending_orders_count}} orders pending.</h3>
+    </div>
+
+    <div class="container">
+      <!-- {% with count=1 %} -->
+      <div class="row">
+        {% for order in orders %}
+        <!-- {% if order.status == "Pending" %}
+        {% if count <= 2 %} -->
+        <div class="col-sm-4">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">{{order.customer}}</h5>
+              <p class="card-text">{{ order.product }}</p>
+              <!-- <a onclick="document.getElementById('quickview').style.display='block'" class="btn btn-primary">View Details</a> -->
+              <a class="btn btn-primary" data-toggle="modal" data-target="#{{ order.customer }}">View Details</a>
+
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="{{ order.customer }}">
+          <span onclick="document.getElementById('{{order.customer}}').style.display='none'"
+            data-dismiss="modal">&times;</span>
+          <div class="container">
+            <div class="modal-content animate">
+              <div class="modal-body my-5">
+                <h2 class="modal-title">{{ order.customer }}</h1>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Item</th>
+                      <th>Quantity</th>
+                    </tr>
+                    <tr>
+                      <td>{{ order.product }}</td>
+                      <!-- HARD CODED THE QUANTITY FOR NOW -->
+                      <td>2</td>
+                    </tr>
+                  </table>
+                  <!-- <div class="row">
+                    <div class="col-sm-6">
+                      <div class="dropdown" style="display: inline;">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Order Status
+                        </button>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <p class="dropdown-item">Pending</p>
+                          <p class="dropdown-item">Out for Delivery</p>
+                          <p class="dropdown-item">Ready for pickup</p>
+                          <p class="dropdown-item">Delivered</p>
+                        </div>
+                      </div>
+                      <div class="col-sm-6" style="display: inline;">
+                        <a href="#" class="btn btn-success">Update</a>
+                      </div>
+                    </div>
+
+
+                  </div> -->
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ status|crispy }}
+                      </form>
+                      <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <!-- {% endif %}
+        
+        {% endif %} -->
+
+        {% endfor %}
+        <!-- {% endwith %} -->
+      </div>
+
+      <script>
+        var quick_modal = document.getElementById('{{order.customer}}');
+
+        window.onclick = function(event)
+        {
+          if (event.target == modal)
+          {
+            quick_modal.style.diplay = "none";
+          }
+        }
+        // console.log('The no of pending orders is: {{ pending_orders_count }}')
+      </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

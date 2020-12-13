@@ -1,0 +1,127 @@
+$purple-lt: rgb(191, 158, 218);
+$purple:rgb(170, 105, 170);
+$purple-dk:rgb(150, 83, 150);
+$bg:rgb(243, 243, 243);
+
+body{
+        background: $bg;
+}
+nav{
+        background: $purple-lt;
+        a{
+                color: ivory;
+        }
+}
+.cards{
+        position: relative;
+        background-color:$bg;
+        padding: 5%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(18rem,0.8fr));
+        row-gap: 4%;
+        .card{
+                transition: transform 0.5s;
+                &:hover{
+                        transform: translateY(-4px);
+                }
+
+                a{
+                        background:$purple;
+                        border: none;
+                }
+                a:hover{
+                        background:$purple-dk;
+                }
+        }
+}
+
+.bestseller{
+        .bestcards{
+                position: relative;
+                display: grid;
+                grid-template-columns: repeat(auto-fit,minmax(19rem,1fr));
+                row-gap: 1%;
+                .card{
+                        transition: transform 0.5s;
+                        &:hover{
+                                transform: translateY(-3px);
+                        }
+        
+                        a{
+                                background:$purple;
+                                border: none;
+                        }
+                        a:hover{
+                                background:$purple-dk ;
+                        }
+                }
+        }
+        
+}
+
+.update{
+        // margin-left: auto;
+        // margin-right: auto;
+        // width: 50%;
+        // padding: 0 auto;
+        // padding: 20%;
+        // text-align: left;
+        margin-left: 40%;
+        padding: 0%;
+        // border-width: 5px;
+        // border-color: black;
+        form{
+                margin: 0 auto;
+                width: 100%;
+                padding: 0;
+                border-width: 1px;
+                border-color: black;
+                button{
+                        background:$purple;
+                        border: none;
+                }
+                button:hover{
+                        background:$purple-dk;
+                }
+        }
+        
+}
+
+.discover{
+        background-color: $bg;
+        h1{
+                background-color: $bg;
+        }
+}
+
+.banner{
+        .card{
+                img{
+                        object-fit: cover;
+                        object-position: 20% 10%;
+                }
+
+        .card-body{
+                position: sticky;
+        }
+        }
+}
+
+.products{
+        div{
+                button{
+                        background:$purple;
+                        border: none;
+                }
+                button:hover{
+                        background:$purple-dk ;
+                }
+        }
+}
+
+.cart{
+        .clearfix{
+                background-color: $purple-lt;
+                color: white;  
+        }
+}

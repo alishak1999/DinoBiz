@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #ebd1eb;
+}
+
+header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 3rem 0;
+}
+
+.container {
+  max-width: 140rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.nav {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: 3rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: #000;
+}
+
+.nav-logo:hover {
+  text-decoration: none;
+  color: #000;
+}
+
+.nav-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+}
+
+.nav-item {
+  margin: 0 2.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #000;
+  -webkit-transition: color .5s;
+  transition: color .5s;
+}
+
+.nav-link:hover {
+  color: #464646;
+}
+
+.container2 {
+  background-color: #ebd1eb;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 12%;
+  padding-right: 30%;
+  padding-left: 30%;
+}
+
+.card {
+  padding: 10px;
+  margin: 10px;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.card-img-top {
+  padding: 0;
+  width: 100%;
+  height: 15vw;
+}
+
+.btn {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 60%;
+  margin-left: 20%;
+  border-radius: 0;
+  border-color: #b77cdf;
+  border-width: 2px;
+  color: #914cbe;
+  font-size: 15px;
+  background-color: #fff;
+}
+
+.btn:hover {
+  background-color: #b77cdf;
+  border-color: #b77cdf;
+}
+
+/* The Modal (background) */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 50%;
+  max-width: 100%;
+  height: 50%;
+  max-height: 100%;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5px auto;
+  /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  /* Position it in the top right corner outside of the modal */
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+/*# sourceMappingURL=get_started.css.map */
